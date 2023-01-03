@@ -13,3 +13,5 @@ RoxygenNote: 7.2.1
 Imports: 
     dplyr,
     pxweb
+URL: https://github.com/bgautijonsson/hagstofa
+BugReports: https://github.com/bgautijonsson/hagstofa/issues
