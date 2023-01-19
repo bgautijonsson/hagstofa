@@ -59,8 +59,8 @@ head(d)
 
 Þið sjáið kannski að við höfum ekki sótt nein gögn ennþá. Hins vegar
 höfum við útbúið töflu sem inniheldur allar mælingar sem við gætum sótt
-gögn fyrir. Ef við viljum t.d. bara sækja gögn um fjölda starfsmanna hjá
-fyrirtækjum í fiskeldi fyrir allt tímabilið getum við keyrt
+gögn fyrir. Ef við viljum t.d. bara sækja gögn um fjölda fyrirtækja í
+fiskeldi fyrir allt tímabilið getum við keyrt
 
 ``` r
 d |> 
