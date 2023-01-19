@@ -1,0 +1,59 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# hagstofa
+
+<!-- badges: start -->
+<!-- badges: end -->
+## Sækja pakkann
+
+Það er hægt að sækja pakkann frá [GitHub](https://github.com/) með kóðanum:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("bgautijonsson/hagstofa")
+```
+
+## Sýnidæmi: Íslensk fyrirtæki
+
+```{r example}
+library(hagstofa)
+```
+
+Hagstofan heldur utan um ýmisleg gögn um íslensk fyrirtæki og afkomuna þeirra. Hér skulum við skoða [rekstrar- og efnahagsyfirlit þeirra frá 2002 - 2021](https://px.hagstofa.is/pxis/pxweb/is/Atvinnuvegir/Atvinnuvegir__fyrirtaeki__afkoma__2_rekstrarogefnahags/FYR08010.px). Með því að velja einhverja flokka, velja áfram og fara svo í flipann *Um töflu* getum við fundið **Nota töfluna í eigin kerfum**. Smellum á það og þá sjáum við *px API* slóð fyrir gögnin.
+
+Það er vel hægt að nota til dæmis [pxweb pakkann](http://ropengov.github.io/pxweb/) frá [rOpenGov](https://ropengov.org/) til að sækja gögn í gegnum þetta API, en mig hefur lengi langað að gera það aðeins þjálla að sækja gögn Hagstofunnar.
+
+Fallið `hg_data()` og meðfylgjandi `collect()` skipun eru fyrsta tilraunin til þess. Ef við notum `hg_data()` á API slóðina fyrir gögnin fáum við eftirfarandi:
+
+```{r, echo = TRUE}
+url <- "https://px.hagstofa.is:443/pxis/api/v1/is/Atvinnuvegir/fyrirtaeki/afkoma/2_rekstrarogefnahags/FYR08010.px"
+
+d <- hg_data(url)
+
+head(d)
+```
+
+Þið sjáið kannski að við höfum ekki sótt nein gögn ennþá. Hins vegar höfum við útbúið töflu sem inniheldur allar mælingar sem við gætum sótt gögn fyrir. Ef við viljum t.d. bara sækja gögn um fjölda starfsmanna hjá fyrirtækjum í fiskeldi fyrir allt tímabilið getum við keyrt
+
+```{r, echo = TRUE}
+d |> 
+  dplyr::filter(
+    Reikningsliður == "0-1-0 Fjöldi",
+    Atvinnugrein == "Fiskeldi (ÍSAT nr. 032)"
+  ) |> 
+  collect()
+```
+

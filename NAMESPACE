@@ -2,4 +2,5 @@
 
 S3method(collect,hagstofa)
 export(collect)
+export(hg_data)
 export(hg_vinnuafl)

@@ -49,6 +49,14 @@ collect.hagstofa <- function(d) {
 }
 
 
+#' Title
+#'
+#' @param url
+#'
+#' @return
+#' @export
+#'
+#' @examples
 hg_data <- function(url) {
 
   url <- url
