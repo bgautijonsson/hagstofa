@@ -4,7 +4,7 @@
 \alias{collect.hagstofa}
 \title{Download a specified hagstofa object}
 \usage{
-\method{collect}{hagstofa}(d)
+collect.hagstofa(d)
 }
 \arguments{
 \item{d}{A hagstofa object defined using hg_data(url)}

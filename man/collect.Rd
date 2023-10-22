@@ -4,7 +4,10 @@
 \alias{collect}
 \title{Define the method collect that we use to download hagstofa objects}
 \usage{
-collect(x)
+collect(x, ...)
+}
+\arguments{
+\item{x}{}
 }
 \description{
 Define the method collect that we use to download hagstofa objects

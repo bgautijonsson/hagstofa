@@ -1,9 +1,12 @@
 
 #' Define the method collect that we use to download hagstofa objects
 #'
+#' @param x
+#'
+#' @return
 #' @export
-collect <- function(x) {
-  UseMethod("collect")
+collect <- function(x, ...) {
+  dplyr::collect(x, ...)
 }
 
 
