@@ -6,9 +6,6 @@
 \usage{
 collect(x)
 }
-\arguments{
-\item{x}{}
-}
 \description{
 Define the method collect that we use to download hagstofa objects
 }
