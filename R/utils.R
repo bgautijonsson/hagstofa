@@ -1,5 +1,5 @@
 
-#' Title
+#' Define the method collect that we use to download hagstofa objects
 #'
 #' @param x
 #'
@@ -12,14 +12,11 @@ collect <- function(x) {
 }
 
 
-#' Title
+#' Download a specified hagstofa object
 #'
-#' @param d
+#' @param d A hagstofa object defined using hg_data(url)
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @return Returns a tibble containing the data
 collect.hagstofa <- function(d) {
   url <- attr(d, "url")
   variables <- attr(d, "variables")
@@ -49,14 +46,12 @@ collect.hagstofa <- function(d) {
 }
 
 
-#' Title
+#' Use a URL for a table from Hagstofa Íslands to create an object of type hagstofa that can be filtered before downloading data
 #'
-#' @param url
+#' @param url The URL for a table from Hagstofa Íslands.
 #'
-#' @return
+#' @return Returns a tibble-like object of class hagstofa that can be filtered before using collect() to download data
 #' @export
-#'
-#' @examples
 hg_data <- function(url) {
 
   url <- url
@@ -96,7 +91,7 @@ hg_data <- function(url) {
     names(temp) <- var_names[i]
 
     variables[[variable_names[i]]] <- pre_table_code[, variable_names[i], drop = T][[1]]
-    names(variables[[variable_names[i]]]) <-pre_table[, var_names[i], drop = T][[1]]
+    names(variables[[variable_names[i]]]) <- pre_table[, var_names[i], drop = T][[1]]
 
     out <- tidyr::crossing(
       out,
