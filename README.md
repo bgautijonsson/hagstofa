@@ -33,7 +33,8 @@ og þá sjáum við *px API* slóð fyrir gögnin.
 Við gætum líka leitað að töflunni með því að nota fallið
 `hg_list_tables()`, sem býr til HTML töflu með öllum töflum
 Hagstofunnar. Við getum leitað í þeirri töflu til að finna vefslóð
-gagna.
+gagna. Það er líka hægt að fletta í töflunni á vefsíðu Metils:
+<https://metill.is/hagstofutoflur/>
 
 Það er vel hægt að nota til dæmis [pxweb
 pakkann](http://ropengov.github.io/pxweb/) frá
