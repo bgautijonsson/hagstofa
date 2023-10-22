@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{collect}
 \alias{collect}
-\title{Title}
+\title{Define the method collect that we use to download hagstofa objects}
 \usage{
 collect(x)
 }
@@ -10,5 +10,5 @@ collect(x)
 \item{x}{}
 }
 \description{
-Title
+Define the method collect that we use to download hagstofa objects
 }

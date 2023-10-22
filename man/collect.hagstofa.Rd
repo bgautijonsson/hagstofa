@@ -2,13 +2,16 @@
 % Please edit documentation in R/utils.R
 \name{collect.hagstofa}
 \alias{collect.hagstofa}
-\title{Title}
+\title{Download a specified hagstofa object}
 \usage{
 \method{collect}{hagstofa}(d)
 }
 \arguments{
-\item{d}{}
+\item{d}{A hagstofa object defined using hg_data(url)}
+}
+\value{
+Returns a tibble containing the data
 }
 \description{
-Title
+Download a specified hagstofa object
 }

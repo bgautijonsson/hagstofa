@@ -2,13 +2,16 @@
 % Please edit documentation in R/utils.R
 \name{hg_data}
 \alias{hg_data}
-\title{Title}
+\title{Use a URL for a table from Hagstofa Íslands to create an object of type hagstofa that can be filtered before downloading data}
 \usage{
 hg_data(url)
 }
 \arguments{
-\item{url}{}
+\item{url}{The URL for a table from Hagstofa Íslands.}
+}
+\value{
+Returns a tibble-like object of class hagstofa that can be filtered before using collect() to download data
 }
 \description{
-Title
+Use a URL for a table from Hagstofa Íslands to create an object of type hagstofa that can be filtered before downloading data
 }
