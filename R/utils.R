@@ -16,6 +16,25 @@ collect <- function(x, ...) {
 #'
 #' @return Returns a tibble containing the data
 collect.hagstofa <- function(d) {
+  data_size <- nrow(d)
+  if (data_size > 5000) {
+    out <- download_large_data(d)
+  } else {
+    out <- download_data(d)
+  }
+
+  out
+}
+
+#' Title
+#'
+#' @param d
+#'
+#' @return
+#' @export
+#'
+#' @examples
+download_data <- function(d) {
   url <- attr(d, "url")
   variables <- attr(d, "variables")
   variable_names <- names(variables)
@@ -23,15 +42,10 @@ collect.hagstofa <- function(d) {
   query <- list()
 
   for (i in seq_along(variable_names)) {
-
     cur_vars <- variables[[i]]
-
     keep_vars <- unique(d[[variable_names[i]]])
-
     query[[variable_names[i]]] <- cur_vars[names(cur_vars) %in% keep_vars] |> unname()
-
   }
-
 
   out <- pxweb::pxweb_get_data(
     url = url,
@@ -40,7 +54,37 @@ collect.hagstofa <- function(d) {
 
   tibble::as_tibble(out)
 
+}
 
+#' Title
+#'
+#' @param d
+#'
+#' @return
+#' @export
+#'
+#' @examples
+download_large_data <- function(d) {
+  url <- attr(d, "url")
+
+  data_size <- nrow(d)
+  unique_values <- apply(
+    d,
+    2,
+    \(x) length(unique(x))
+  )
+
+  grouped_data_size <- data_size / unique_values
+  usable_columns <- grouped_data_size[grouped_data_size <= 5000]
+  split_var <- names(usable_columns[usable_columns == max(usable_columns)])
+  split_values <- unique(d[[split_var]])
+  out <- list()
+  for (i in seq_along(split_values)) {
+    temp_d <- d[d[[split_var]] == split_values[i], ]
+    out[[i]] <- download_data(temp_d)
+  }
+
+  dplyr::bind_rows(out)
 }
 
 
@@ -51,8 +95,6 @@ collect.hagstofa <- function(d) {
 #' @return Returns a tibble-like object of class hagstofa that can be filtered before using collect() to download data
 #' @export
 hg_data <- function(url) {
-
-  url <- url
 
   px_vars <- pxweb::pxweb_get(url)
 
