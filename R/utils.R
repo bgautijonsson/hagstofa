@@ -26,14 +26,11 @@ collect.hagstofa <- function(d) {
   out
 }
 
-#' Title
+#' Download a hagstofa object that contains < 5000 lines of results
 #'
-#' @param d
+#' @param d A hagstofa object defined using hg_data(url)
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @return Returns a tibble containing the data
 download_data <- function(d) {
   url <- attr(d, "url")
   variables <- attr(d, "variables")
@@ -56,14 +53,13 @@ download_data <- function(d) {
 
 }
 
-#' Title
+#' Download a hagstofa object that would give > 5000 lines.
 #'
-#' @param d
+#' The data is downloaded by finding which variable uses the least amount of sub-queries and makes all sub-queries return < 5000 lines.
 #'
-#' @return
-#' @export
+#' @param A hagstofa object defined using hg_data(url)
 #'
-#' @examples
+#' @return Returns a tibble containing the data
 download_large_data <- function(d) {
   url <- attr(d, "url")
 
