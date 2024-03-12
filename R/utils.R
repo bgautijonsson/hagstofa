@@ -61,18 +61,15 @@ download_data <- function(d) {
 #'
 #' @return Returns a tibble containing the data
 download_large_data <- function(d) {
-  url <- attr(d, "url")
-
   data_size <- nrow(d)
   unique_values <- apply(
     d,
     2,
     \(x) length(unique(x))
   )
-
   grouped_data_size <- data_size / unique_values
   usable_columns <- grouped_data_size[grouped_data_size <= 5000]
-  split_var <- names(usable_columns[usable_columns == max(usable_columns)])
+  split_var <- names(usable_columns[usable_columns == max(usable_columns)][1])
   split_values <- unique(d[[split_var]])
   out <- list()
   for (i in seq_along(split_values)) {
