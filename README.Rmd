@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # hagstofa
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/bgautijonsson/hagstofa/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/bgautijonsson/hagstofa/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 ## Sækja pakkann
 
